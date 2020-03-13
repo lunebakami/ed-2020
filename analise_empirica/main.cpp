@@ -32,7 +32,7 @@ int retornaMenor(int v[], int inicio, int tamanho)
 
 int *selection(int v[], int tamanho)
 {
-    int tamanho, menor, troca;
+    int menor, troca;
 
     for (int i = 0; i < tamanho; i++)
     {
@@ -47,18 +47,9 @@ int *selection(int v[], int tamanho)
 
 int *insertion(int v[], int tamanho)
 {
-    int n, j, valor;
+    int j, valor;
 
-    scanf("%d", &n);
-
-    int v[n];
-
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &v[i]);
-    }
-
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < tamanho; i++)
     {
         valor = v[i];
         j = i - 1;
@@ -75,20 +66,11 @@ int *insertion(int v[], int tamanho)
 
 int *bubble(int v[], int tamanho)
 {
-    int n, j, troca;
+    int j, troca;
 
-    scanf("%d", &n);
-
-    int v[n];
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < tamanho - 1; i++)
     {
-        scanf("%d", &v[i]);
-    }
-
-    for (int i = 0; i < n - 1; i++)
-    {
-        for (int k = 0; k < n - i; k++)
+        for (int k = 0; k < tamanho - i; k++)
         {
             if (v[k + 1] < v[k])
             {
@@ -151,6 +133,13 @@ int main()
 
     fim = clock();
     tempo_bubble = 1000.0 * double(fim - inicio) / CLOCKS_PER_SEC;
+
+    for (int i = 0; i < tamanho_vetor; i++)
+    {
+        printf("%i - %i - %i \n", vetor_insertion[i], vetor_selection[i], vetor_bubble[i]);
+    }
+
+    printf("\nTempos: %f - %f - %f", tempo_selection, tempo_insertion, tempo_bubble);
 
     delete[] vetor_selection;
     delete[] vetor_insertion;
